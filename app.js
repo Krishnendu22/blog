@@ -1,8 +1,8 @@
 const express=require("express");
 const app=express();
-
+require('dotenv').config();
 const ejs=require("ejs");
-
+const api_key=process.env.API_KEY;
 const bodyParser=require("body-parser");
 
 var _ = require('lodash');
@@ -21,13 +21,14 @@ const startingAbout="I'm Krishnendu and that's it IG... :-)"
 
 
 
+
 async function main() {
 
 
-  await mongoose.connect('mongodb+srv://krishnendu:krishnendu22@cluster0.37roixz.mongodb.net/blogDB?retryWrites=true&w=majority');
+  await mongoose.connect(`mongodb+srv://krish:${api_key}@cluster0.37roixz.mongodb.net/?retryWrites=true&w=majority`);
   console.log("Connected");
 
-
+  
 //creating a schema
 const blogSchema= new mongoose.Schema({
   title:String,
